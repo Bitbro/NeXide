@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private bool onGround;
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
@@ -35,13 +35,9 @@ public class Player : MonoBehaviour
     // Using FixedUpdate for integrated physics movement.
     private void FixedUpdate()
     {
-        // DEBUG CONSTANT
         this.speed = rb.velocity.magnitude;
-
-        // Get Player Input
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         GroundCheck();
         HorizontalMovement(moveHorizontal);
         if (moveVertical > 0.3f)
@@ -76,6 +72,7 @@ public class Player : MonoBehaviour
 
     private void HorizontalMovement(float moveHorizontal)
     {
+
         Vector2 movement = new Vector2(moveHorizontal, 0);
         float desiredHorizontalSpeed = moveHorizontal * maxSpeed;
 
@@ -109,8 +106,7 @@ public class Player : MonoBehaviour
     }
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        rb.velocity += new Vector2(0, jumpForce);
     }
     private void GroundCheck()
     {
