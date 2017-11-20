@@ -13,8 +13,11 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Use FixedUpdate to synchronize with player movement
 	void FixedUpdate () {
-        Vector3 targetPosition = (cam.ScreenToWorldPoint(Input.mousePosition) + (player.transform.position) * 1.5f) / 2.5f;
-        targetPosition.z = -10;
-        this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, 0.2f);
+        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        // Delta algorithm. Ask Preston if you're curious
+        Vector3 targetPositionDelta = mousePos / 2.5f - 0.4f * player.transform.position;
+        targetPositionDelta.z = -10;
+        targetPositionDelta = Vector3.ClampMagnitude(targetPositionDelta, maxDistance);
+        this.transform.position = Vector3.Lerp(this.transform.position, player.transform.position + targetPositionDelta, 0.2f);
     }
 }
