@@ -17,8 +17,14 @@ public class Player : MonoBehaviour
     [Header("Debug")]
     [SerializeField]
     private bool onGround;
+
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
+    // Amount of time before you can double jump
+    [SerializeField] private float doubleJumpDelay = 0.2f;
+    private float lastGroundJump;
+
+    [HideInInspector]
     public Rigidbody2D rb;
 
     private void Start()
@@ -29,22 +35,22 @@ public class Player : MonoBehaviour
     private void Update()
     {
         AimGun();
-        
+
     }
 
     // Using FixedUpdate for integrated physics movement.
     private void FixedUpdate()
-    {
+    {        
         // DEBUG CONSTANT
         this.speed = rb.velocity.magnitude;
 
         // Get Player Input
         float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
+        bool jump = Input.GetKeyDown(KeyCode.W);
+        
         GroundCheck();
         HorizontalMovement(moveHorizontal);
-        if (moveVertical > 0.3f)
+        if (jump)
         {
             VerticalMovement();
         }
@@ -88,47 +94,47 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector2(((desiredHorizontalSpeed - rb.velocity.x) / jumpSpeedResistance), 0);
         }
     }
+
+
     private void VerticalMovement()
     {
         if (onGround)
         {
+            lastGroundJump = Time.time;
             onGround = false;
             Jump();
-            StartCoroutine(EnableDoubleJump());
         }
-        else if (doubleJump)
+        else if (doubleJump && (Time.time - lastGroundJump >= doubleJumpDelay || rb.velocity.y <= 0))
         {
             doubleJump = false;
             Jump();
         }
     }
-    private IEnumerator EnableDoubleJump()
-    {
-        yield return new WaitForSecondsRealtime(0.25f);
-        doubleJump = true;
-    }
+
+    int jumps;
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
     }
     private void GroundCheck()
     {
         Vector2 position = transform.position;
         Vector2 direction = Vector2.down;
-        float distance = 1.21f;
+        float distance = 1.05f;
         Debug.DrawRay(position, direction * distance, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
         if (hit.collider != null)
         {
             onGround = true;
-            doubleJump = false;
-        }
-        else if (onGround)
-        {
-            onGround = false;
             doubleJump = true;
         }
+        else
+        {
+            onGround = false;
+        }
+
     }
 
 
