@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 802
-  m_MinSize: {x: 917, y: 442}
-  m_MaxSize: {x: 22012, y: 10021}
+  m_MinSize: {x: 913, y: 442}
+  m_MaxSize: {x: 22008, y: 10000}
   vertical: 0
-  controlID: 1057
+  controlID: 2637
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1058
+  controlID: 2638
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,8 +144,8 @@ MonoBehaviour:
     y: 0
     width: 631
     height: 411
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -212,9 +212,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.332778
+    m_Target: 8.540973
     speed: 2
-    m_Value: 5.332778
+    m_Value: 8.540973
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -268,8 +268,8 @@ MonoBehaviour:
     y: 0
     width: 204
     height: 802
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -303,23 +303,23 @@ MonoBehaviour:
     height: 781
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a4420000
-    m_LastClickedID: 17060
-    m_ExpandedIDs: d65cfeffdc5cfeffee5cfeff005dfeff085dfeff425dfeff56f7ffff00000000
+    m_SelectedIDs: b0420000
+    m_LastClickedID: 17072
+    m_ExpandedIDs: d65cfeffdc5cfeffee5cfeff005dfeff085dfeff425dfeff56f7ffff00000000a4420000b0420000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: NovaNexide
-      m_OriginalName: NovaNexide
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -5388
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -345,8 +345,8 @@ MonoBehaviour:
     y: 0
     width: 328
     height: 802
-  m_MinSize: {x: 234, y: 271}
-  m_MaxSize: {x: 10004, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -455,9 +455,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a4420000
-    m_LastClickedInstanceID: 17060
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: b0420000
+    m_LastClickedInstanceID: 17072
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 90300000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 57}
+    m_ScrollPosition: {x: 0, y: 150}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 204
 --- !u!114 &11
