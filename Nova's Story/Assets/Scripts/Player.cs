@@ -20,9 +20,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
-    // Amount of time before you can double jump
-    [SerializeField] private float doubleJumpDelay = 0.2f;
-    private float lastGroundJump;
 
     [HideInInspector]
     public Rigidbody2D rb;
@@ -35,25 +32,24 @@ public class Player : MonoBehaviour
     private void Update()
     {
         AimGun();
-
     }
 
     // Using FixedUpdate for integrated physics movement.
     private void FixedUpdate()
-    {        
+    {
         // DEBUG CONSTANT
         this.speed = rb.velocity.magnitude;
 
         // Get Player Input
         float moveHorizontal = Input.GetAxis("Horizontal");
-        bool jump = Input.GetKeyDown(KeyCode.W);
-        
+        float moveVertical = Input.GetAxis("Vertical");
+
+        // Check if player is on ground
         GroundCheck();
+        
+        // Process user inputted movement
         HorizontalMovement(moveHorizontal);
-        if (jump)
-        {
-            VerticalMovement();
-        }
+        VerticalMovement(moveVertical);
     }
 
     //
@@ -75,11 +71,10 @@ public class Player : MonoBehaviour
             gun.transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg));
         }
     }
-    
+
     //
     // MOVEMENT HELPERS
     //
-
     private void HorizontalMovement(float moveHorizontal)
     {
         Vector2 movement = new Vector2(moveHorizontal, 0);
@@ -95,47 +90,76 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    private void VerticalMovement()
+    // Jumping with axis input
+    private bool jumpInputRecharge;
+    private bool jump;
+    private void VerticalMovement(float moveVertical)
     {
-        if (onGround)
+        // Force player to press up a second time for manual timing of second jump
+        if (moveVertical < 0.5f)
         {
-            lastGroundJump = Time.time;
+            jumpInputRecharge = true;
+        }
+
+        // Query Jump input
+        if (moveVertical > 0.5f)
+        {
+            jump = true;
+        }
+        else
+        {
+            jump = false;
+        }
+
+        // First jump
+        if (onGround && jump)
+        {
             onGround = false;
+            jumpInputRecharge = false;
+            jump = false;
             Jump();
         }
-        else if (doubleJump && (Time.time - lastGroundJump >= doubleJumpDelay || rb.velocity.y <= 0))
+        // Second jump
+        else if (doubleJump && jump && (jumpInputRecharge || rb.velocity.y + Physics2D.gravity.y * Time.deltaTime <= 0))
         {
             doubleJump = false;
             Jump();
         }
     }
 
-    int jumps;
     private void Jump()
     {
-
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-
     }
+
     private void GroundCheck()
     {
+        // Position of ray start
         Vector2 position = transform.position;
+
+        // Direction of ray
         Vector2 direction = Vector2.down;
+
+        // Max distance ray should extend
         float distance = 1.05f;
-        Debug.DrawRay(position, direction * distance, Color.green);
+
+        // Draw a ray down until it hits the ground or reaches max distance
         RaycastHit2D hit = Physics2D.Raycast(position, direction, distance, groundLayer);
+
+        // If ray hits ground
         if (hit.collider != null)
         {
             onGround = true;
             doubleJump = true;
         }
+
+        // If ray hits nothing
         else
         {
             onGround = false;
         }
 
+        // Draw ray for debug (in Gizmos on editor)
+        Debug.DrawRay(position, direction * distance, Color.green);
     }
-
-
 }
