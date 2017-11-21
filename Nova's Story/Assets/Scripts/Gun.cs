@@ -19,6 +19,9 @@ public class Gun : MonoBehaviour {
             
             Bullet b = Instantiate(bullet, muzzle.position, muzzle.rotation).GetComponent<Bullet>(); //instantiates the bullet with muzzle location and direction
             b.transform.Rotate(new Vector3(0,-90,0));
+
+
+            
         }
     
     
