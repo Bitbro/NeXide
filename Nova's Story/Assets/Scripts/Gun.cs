@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(button: 0)) {
             
             Bullet b = Instantiate(bullet, muzzle.position, muzzle.rotation).GetComponent<Bullet>(); //instantiates the bullet with muzzle location and direction
             b.transform.Rotate(new Vector3(0,-90,0));
