@@ -8,12 +8,14 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float startTime;
-
+    public AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
 
+        audioSource = GetComponent<AudioSource>();
         startTime = Time.time;
+        audioSource.Play();
 
     }
 
