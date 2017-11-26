@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 1611136905}
   - component: {fileID: 1611136906}
   - component: {fileID: 1611136907}
+  - component: {fileID: 1611136908}
   m_Layer: 0
   m_Name: NovaPrototype
   m_TagString: Untagged
@@ -387,6 +388,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1611136908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1611136902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85110123f08020f4e95a7649251fd517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &1775771375
 GameObject:
   m_ObjectHideFlags: 0
