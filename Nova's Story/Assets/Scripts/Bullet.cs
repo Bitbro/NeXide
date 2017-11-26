@@ -7,13 +7,15 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] private float speed;
-    [SerializeField] private float startTime;
+    
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
 
-        startTime = Time.time;
+
+        StartCoroutine(BulletDespawn());
+
 
     }
 
@@ -21,14 +23,28 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
 
-        float timeSinceIntantiation = Time.time - startTime;
+       
         transform.position += speed * (transform.rotation * Vector3.right) * Time.deltaTime;
 
-        if (timeSinceIntantiation > 5)
-        {
-
-            Destroy(gameObject);
-
-        }
     }
+
+    private IEnumerator BulletDespawn()
+    {
+
+        yield return new WaitForSeconds(4f);
+
+        this.gameObject.SetActive(false);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        this.gameObject.SetActive(false);
+        other.gameObject.GetComponent<Health>().TakeDamage(34);
+
+        
+
+    }
+
 }
