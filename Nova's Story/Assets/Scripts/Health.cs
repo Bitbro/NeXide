@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
+
+
     private int health;
     public int damage;
 
@@ -24,7 +26,19 @@ public class Health : MonoBehaviour {
     public void TakeDamage(int damage)
     {
 
-        health -= damage;
+        if (health > 0) {
+
+            health -= damage;
+
+            if (health <= 0)
+            {
+            
+            this.gameObject.SetActive(false);
+
+            }
+
+        }
+
 
     }
 }

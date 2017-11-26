@@ -41,8 +41,14 @@ public class Bullet : MonoBehaviour
     {
 
         this.gameObject.SetActive(false);
-        other.gameObject.GetComponent<Health>().TakeDamage(34);
 
+        Health health = other.GetComponent<Health>();
+        if (health != null)
+        {
+
+            health.TakeDamage(34);
+
+        }
         
 
     }
