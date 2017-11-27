@@ -32,8 +32,8 @@ public class Health : MonoBehaviour {
 
             if (health <= 0)
             {
-            
-            this.gameObject.SetActive(false);
+
+                Death();
 
             }
 
@@ -41,4 +41,12 @@ public class Health : MonoBehaviour {
 
 
     }
+
+    void Death()
+    {
+
+        this.gameObject.SetActive(false);
+
+    }
+
 }
