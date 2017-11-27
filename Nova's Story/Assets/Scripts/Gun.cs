@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour {
     [SerializeField] private Transform muzzle;
-    [SerializeField] private GameObject bullet;
     private AudioSource audioSource;
 
 	// Use this for initialization
@@ -19,9 +18,8 @@ public class Gun : MonoBehaviour {
 	void Update () {
 		
         if (Input.GetMouseButtonDown(0)) {
+            SpicySpriteManager.AddBullet(muzzle.position, muzzle.rotation);
             
-            Bullet b = Instantiate(bullet, muzzle.position, muzzle.rotation).GetComponent<Bullet>(); //instantiates the bullet with muzzle location and direction
-            b.transform.Rotate(new Vector3(0,-90,0));
 
             audioSource.Play();
 
