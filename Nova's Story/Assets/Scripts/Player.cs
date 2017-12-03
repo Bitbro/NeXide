@@ -196,17 +196,27 @@ public class Player : MonoBehaviour
 
             if (!usePhysics)
             {
-                rb.velocity = new Vector2(0, 0.25f);
+                // Zero out gravity on slope (0.17f velocity cancels out gravity)
+                rb.velocity = new Vector2(rb.velocity.x, 0.17f);
 
                 float slopeAngle = Vector2.Angle(groundNormal, Vector2.up);
                 //rb.velocity += new Vector2(0, -(2.2f * Mathf.Cos(slopeAngle * Mathf.Deg2Rad) -2.2f));
-                float velocityX = moveHorizontal * maxSpeed * Mathf.Cos(slopeAngle * Mathf.Deg2Rad);
+                float velocityX = rb.velocity.x;
                 if (slopeAngle <= maxClimbAngle)
                 {
                     float moveDistance = Mathf.Abs(velocityX);
+                    float climbMultiplier = 0f;
+                    if(Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX)){
+                        climbMultiplier = 1.1f; // Higher gravity down slope
+                    }
+                    else
+                    {
+                        climbMultiplier = -1f;
+                    }
+
                     float climbVelocityY = -Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance
-                        * (Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX) ? 1 : -1);
-                    rb.velocity += new Vector2(velocityX, climbVelocityY);
+                        * climbMultiplier;
+                    rb.velocity += new Vector2(0, climbVelocityY);
                 }
             }
         }
