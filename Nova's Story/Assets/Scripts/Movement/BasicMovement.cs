@@ -1,115 +1,62 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-public class Player : MonoBehaviour
+﻿using UnityEngine;
+using System.Collections.Generic;
+public class BasicMovement : MonoBehaviour
 {
-
-    [SerializeField] private Gun gun;
-    [SerializeField] private LayerMask groundLayer;
     [Header("Movement")]
     [SerializeField] private float maxSpeed;
     [SerializeField] private float speedResistance;
     [SerializeField] private float maxClimbAngle;
+    [SerializeField] private LayerMask groundLayer;
 
     [Header("Jump")]
     [SerializeField] private float jumpSpeedResistance;
     [SerializeField] private float jumpForce;
+    [SerializeField] private bool canDoubleJump;
     [SerializeField] private float maxDoubleJumpForce;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float doubleJumpControl = 2f;
 
     [Header("Debug")]
-    [SerializeField]
-    private bool onGround;
+    [SerializeField] private bool onGround;
 
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
 
-    [HideInInspector] public Rigidbody2D rb;
-    private Vector2 groundNormal;
+    private Rigidbody2D rb;
     private bool usePhysics;
     private List<GameObject> collisions;
+    private Vector2 groundNormal;
 
     private void Start()
     {
         collisions = new List<GameObject>();
         rb = this.GetComponent<Rigidbody2D>();
-        usePhysics = false;
     }
 
-    private void Update()
-    {
-        AimGun();
-    }
 
-    // Using FixedUpdate for integrated physics movement.
-    private void FixedUpdate()
+    public void HorizontalMovement(float moveHorizontal)
     {
-        // DEBUG CONSTANT
-        this.speed = rb.velocity.magnitude;
-        // Get Player Input
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        // Check if player is on ground
         GroundCheck();
-
-        // Process user inputted movement
-        HorizontalMovement(moveHorizontal);
-        VerticalMovement(moveVertical);
-
-        // Allow player to correct double jump in midair and add weightiness to jump
-        JumpCorrection();
-        // Correct player to ground plane
-        GroundCorrection(moveHorizontal);
-        
-    }
-
-
-
-    //
-    // AIM HELPERS
-    //
-    private void AimGun()
-    {
-        Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gun.transform.position;
-        target.z = 0;
-
-        if (target.x <= 0)
-        {
-            this.transform.localScale = new Vector3(-1, 1, 1);
-            gun.transform.rotation = Quaternion.Euler(0, 0, -(Mathf.Atan2(target.y, -target.x) * Mathf.Rad2Deg));
-        } 
-        else
-        {
-            this.transform.localScale = new Vector3(1, 1, 1);
-            gun.transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg));
-        }
-    }
-
-    //
-    // MOVEMENT HELPERS
-    //
-    private void HorizontalMovement(float moveHorizontal)
-    {
         Vector2 movement = new Vector2(moveHorizontal, 0);
         float desiredHorizontalSpeed = moveHorizontal * maxSpeed;
 
         if (onGround)
         {
-            rb.velocity += new Vector2((desiredHorizontalSpeed - rb.velocity.magnitude * (rb.velocity.x>0?1:-1)) / 
+            rb.velocity += new Vector2((desiredHorizontalSpeed - rb.velocity.magnitude * (rb.velocity.x > 0 ? 1 : -1)) /
                 (speedResistance), 0);
         }
         else
         {
             rb.velocity += new Vector2(((desiredHorizontalSpeed - rb.velocity.x) / jumpSpeedResistance), 0);
         }
+
+        GroundCorrection(moveHorizontal);
     }
 
     // Jumping with axis input
     private bool jumpInputRecharge;
     private bool jump;
-    private void VerticalMovement(float moveVertical)
+    public void VerticalMovement(float moveVertical)
     {
         // Force player to press up a second time for manual timing of second jump
         if (moveVertical < 0.5f)
@@ -136,11 +83,13 @@ public class Player : MonoBehaviour
             Jump(jumpForce);
         }
         // Second jump
-        else if (doubleJump && jump && (jumpInputRecharge || rb.velocity.y + Physics2D.gravity.y * Time.deltaTime <= 0))
+        else if (canDoubleJump && doubleJump && jump && (jumpInputRecharge || rb.velocity.y + Physics2D.gravity.y * Time.deltaTime <= 0))
         {
             doubleJump = false;
             Jump(maxDoubleJumpForce);
         }
+
+        JumpCorrection();
     }
 
     private void Jump(float force)
@@ -170,7 +119,7 @@ public class Player : MonoBehaviour
     {
         // Position of ray start
         Vector2 position = transform.position;
-        RaycastHit2D groundHit = Physics2D.BoxCast(position, boxSize, transform.rotation.z, -transform.up, 1.02f, groundLayer);        
+        RaycastHit2D groundHit = Physics2D.BoxCast(position, boxSize, transform.rotation.z, -transform.up, 1.02f, groundLayer);
 
         // If ray hits ground
         if (groundHit.collider != null)
@@ -206,7 +155,8 @@ public class Player : MonoBehaviour
                 {
                     float moveDistance = Mathf.Abs(velocityX);
                     float climbMultiplier = 0f;
-                    if(Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX)){
+                    if (Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX))
+                    {
                         climbMultiplier = 1.1f; // Higher gravity down slope
                     }
                     else
