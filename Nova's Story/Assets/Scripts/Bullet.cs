@@ -7,28 +7,48 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] private float speed;
-    [SerializeField] private float startTime;
+    
 
     // Use this for initialization
-    void Start()
+    void OnEnable()
     {
 
-        startTime = Time.time;
+
+        StartCoroutine(BulletDespawn());
+
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-
-        float timeSinceIntantiation = Time.time - startTime;
+    {       
         transform.position += speed * (transform.rotation * Vector3.right) * Time.deltaTime;
 
-        if (timeSinceIntantiation > 5)
+    }
+
+    private IEnumerator BulletDespawn()
+    {
+
+        yield return new WaitForSeconds(4f);
+
+        this.gameObject.SetActive(false);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger Entered");
+        this.gameObject.SetActive(false);
+
+        Health health = other.GetComponent<Health>();
+        if (health != null)
         {
 
-            Destroy(gameObject);
+            health.TakeDamage(34);
 
         }
+        
+
     }
+
 }
