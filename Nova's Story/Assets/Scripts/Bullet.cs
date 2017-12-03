@@ -21,9 +21,7 @@ public class Bullet : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-
-       
+    {       
         transform.position += speed * (transform.rotation * Vector3.right) * Time.deltaTime;
 
     }
@@ -39,7 +37,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        Debug.Log("Trigger Entered");
         this.gameObject.SetActive(false);
 
         Health health = other.GetComponent<Health>();
