@@ -116,7 +116,7 @@ public class BasicMovement : MonoBehaviour
     // Distance boxcast should start from player center
     private readonly Vector2 boxOffset = new Vector2(0, -1.05f);
     // Size of boxcast
-    private readonly Vector2 boxSize = new Vector2(1f, 0.05f);
+    private readonly Vector2 boxSize = new Vector2(0.9f, 0.05f);
     private void GroundCheck()
     {
         // Position of ray start
