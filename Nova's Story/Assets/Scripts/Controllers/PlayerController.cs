@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Gun gun;
     private BasicMovement movementHandler;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        AimGun();
+        gun.AimGun(Camera.main.ScreenToWorldPoint(Input.mousePosition), this.transform);
     }
 
     // Using FixedUpdate for integrated physics movement.
@@ -27,24 +27,5 @@ public class Player : MonoBehaviour
         movementHandler.HorizontalMovement(moveHorizontal);
         movementHandler.VerticalMovement(moveVertical);  
     }
-
-    //
-    // AIM HELPERS
-    //
-    private void AimGun()
-    {
-        Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gun.transform.position;
-        target.z = 0;
-
-        if (target.x <= 0)
-        {
-            this.transform.localScale = new Vector3(-1, 1, 1);
-            gun.transform.rotation = Quaternion.Euler(0, 0, -(Mathf.Atan2(target.y, -target.x) * Mathf.Rad2Deg));
-        } 
-        else
-        {
-            this.transform.localScale = new Vector3(1, 1, 1);
-            gun.transform.rotation = Quaternion.Euler(0, 0, (Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg));
-        }
-    }    
+ 
 }

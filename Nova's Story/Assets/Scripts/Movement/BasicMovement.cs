@@ -3,22 +3,22 @@ using System.Collections.Generic;
 public class BasicMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float speedResistance;
-    [SerializeField] private float maxClimbAngle;
+
+    [SerializeField] private float maxSpeed = 7f;
+    [SerializeField] private float speedResistance = 3.5f;
+    [SerializeField] private float maxClimbAngle = 45f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Jump")]
-    [SerializeField] private float jumpSpeedResistance;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpSpeedResistance = 7f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private bool canDoubleJump;
-    [SerializeField] private float maxDoubleJumpForce;
+    [SerializeField] private float maxDoubleJumpForce = 15f;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float doubleJumpControl = 2f;
 
     [Header("Debug")]
     [SerializeField] private bool onGround;
-
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
 
@@ -37,7 +37,6 @@ public class BasicMovement : MonoBehaviour
     public void HorizontalMovement(float moveHorizontal)
     {
         GroundCheck();
-        Vector2 movement = new Vector2(moveHorizontal, 0);
         float desiredHorizontalSpeed = moveHorizontal * maxSpeed;
 
         if (onGround)
@@ -111,27 +110,25 @@ public class BasicMovement : MonoBehaviour
             }
         }
     }
-    // Distance boxcast should start from player center
-    private readonly Vector2 boxOffset = new Vector2(0, -1.05f);
+
     // Size of boxcast
-    private readonly Vector2 boxSize = new Vector2(0.85f, 0.05f);
+    private readonly Vector2 boxSize = new Vector2(0.9f, 0.05f);
     private void GroundCheck()
     {
         // Position of ray start
         Vector2 position = transform.position;
         RaycastHit2D groundHit = Physics2D.BoxCast(position, boxSize, transform.rotation.z, -transform.up, 1.02f, groundLayer);
-
+        groundNormal = groundHit.normal;
+        float slopeAngle = Vector2.Angle(groundNormal, Vector2.up);
         // If ray hits ground
-        if (groundHit.collider != null)
+        if (groundHit.collider != null && slopeAngle <= maxClimbAngle)
         {
             onGround = true;
-            doubleJump = true;
-            groundNormal = groundHit.normal;
+            doubleJump = true;            
         }
         // If ray hits nothing
         else
         {
-            groundNormal = Vector2.zero;
             onGround = false;
         }
 
@@ -140,35 +137,32 @@ public class BasicMovement : MonoBehaviour
 
     private void GroundCorrection(float moveHorizontal)
     {
-        if (onGround)
+        if (onGround && !usePhysics)
         {
+            // Zero out gravity on slope (0.17f velocity cancels out gravity)
+            rb.velocity = new Vector2(rb.velocity.x, 0.17f);
 
-            if (!usePhysics)
+            float slopeAngle = Vector2.Angle(groundNormal, Vector2.up);
+            //rb.velocity += new Vector2(0, -(2.2f * Mathf.Cos(slopeAngle * Mathf.Deg2Rad) -2.2f));
+            float velocityX = rb.velocity.x;
+            if (slopeAngle <= maxClimbAngle)
             {
-                // Zero out gravity on slope (0.17f velocity cancels out gravity)
-                rb.velocity = new Vector2(rb.velocity.x, 0.17f);
-
-                float slopeAngle = Vector2.Angle(groundNormal, Vector2.up);
-                //rb.velocity += new Vector2(0, -(2.2f * Mathf.Cos(slopeAngle * Mathf.Deg2Rad) -2.2f));
-                float velocityX = rb.velocity.x;
-                if (slopeAngle <= maxClimbAngle)
+                float moveDistance = Mathf.Abs(velocityX);
+                float climbMultiplier = 0f;
+                if (Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX))
                 {
-                    float moveDistance = Mathf.Abs(velocityX);
-                    float climbMultiplier = 0f;
-                    if (Mathf.Sign(groundNormal.x) * Mathf.Sign(groundNormal.y) == Mathf.Sign(velocityX))
-                    {
-                        climbMultiplier = 1.1f; // Higher gravity down slope
-                    }
-                    else
-                    {
-                        climbMultiplier = -1f;
-                    }
-
-                    float climbVelocityY = -Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance
-                        * climbMultiplier;
-                    rb.velocity += new Vector2(0, climbVelocityY);
+                    climbMultiplier = 1.1f; // Higher gravity down slope
                 }
+                else
+                {
+                    climbMultiplier = -1f;
+                }
+
+                float climbVelocityY = -Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance
+                    * climbMultiplier;
+                rb.velocity += new Vector2(0, climbVelocityY);
             }
+
         }
     }
 
