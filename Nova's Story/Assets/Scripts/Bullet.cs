@@ -37,7 +37,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger Entered");
         this.gameObject.SetActive(false);
 
         Health health = other.GetComponent<Health>();

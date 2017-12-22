@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour {
 	void FixedUpdate () {
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         // Delta algorithm. Ask Preston if you're curious
-        Vector3 targetPositionDelta = mousePos / 4f - 0.4f * player.transform.position;
+        Vector3 targetPositionDelta = (mousePos + 3 * player.transform.position) / 4 - player.transform.position;
         targetPositionDelta.z = -10;
         targetPositionDelta = Vector3.ClampMagnitude(targetPositionDelta, maxDistance);
         this.transform.position = Vector3.Lerp(this.transform.position, player.transform.position + targetPositionDelta, 0.2f);
