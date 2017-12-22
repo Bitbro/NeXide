@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
-    [SerializeField] private Player player;
+    [SerializeField] private PlayerController player;
     private Camera cam;
     [SerializeField] private float maxDistance;
 	// Use this for initialization

@@ -12,11 +12,7 @@ public class Bullet : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-
-
         StartCoroutine(BulletDespawn());
-
-
     }
 
     // Update is called once per frame
