@@ -18,15 +18,10 @@ public class Gun : MonoBehaviour {
 	void Update () {
 		
         if (Input.GetMouseButtonDown(0)) {
-            SpicySpriteManager.AddBullet(muzzle.position, muzzle.rotation);
-            
+            SpicySpriteManager.AddBullet(muzzle.position, muzzle.rotation);           
 
             audioSource.Play();
-
-
         }
-
-
     }
 
     public void AimGun(Vector3 aimPosition, Transform aimer)
