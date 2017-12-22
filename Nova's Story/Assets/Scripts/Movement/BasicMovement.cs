@@ -3,25 +3,22 @@ using System.Collections.Generic;
 public class BasicMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField]
-    private float maxSpeed;
-    [SerializeField] private float speedResistance;
-    [SerializeField] private float maxClimbAngle;
+
+    [SerializeField] private float maxSpeed = 7f;
+    [SerializeField] private float speedResistance = 3.5f;
+    [SerializeField] private float maxClimbAngle = 45f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Jump")]
-    [SerializeField]
-    private float jumpSpeedResistance;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpSpeedResistance = 7f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private bool canDoubleJump;
-    [SerializeField] private float maxDoubleJumpForce;
+    [SerializeField] private float maxDoubleJumpForce = 15f;
     [SerializeField] private float fallMultiplier = 2.5f;
     [SerializeField] private float doubleJumpControl = 2f;
 
     [Header("Debug")]
-    [SerializeField]
-    private bool onGround;
-
+    [SerializeField] private bool onGround;
     [SerializeField] private bool doubleJump;
     [SerializeField] private float speed;
 
@@ -113,8 +110,7 @@ public class BasicMovement : MonoBehaviour
             }
         }
     }
-    // Distance boxcast should start from player center
-    private readonly Vector2 boxOffset = new Vector2(0, -1.05f);
+
     // Size of boxcast
     private readonly Vector2 boxSize = new Vector2(0.9f, 0.05f);
     private void GroundCheck()
