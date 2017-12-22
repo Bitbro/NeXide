@@ -320,12 +320,16 @@
     <Compile Include="Assets\Pathfinding\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\Pathfinding\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\Pathfinding\Utilities\UnityReferenceHelper.cs" />
+    <Compile Include="Assets\Scripts\AIManager.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\HumanoidAIController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Graphs\PlatformerGenerator.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Movement\BasicMovement.cs" />
-    <Compile Include="Assets\Scripts\Movement\Player.cs" />
     <Compile Include="Assets\Scripts\SpicySpriteManager.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -330,6 +330,7 @@
     <Compile Include="Assets\Pathfinding\Editor\SeekerEditor.cs" />
     <Compile Include="Assets\Pathfinding\Legacy\Editor\LegacyAIPathEditor.cs" />
     <Compile Include="Assets\Pathfinding\Legacy\Editor\LegacyEditorHelper.cs" />
+    <Compile Include="Assets\Scripts\Editor\GridGraphEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Pathfinding\Editor\EditorAssets\Materials\Navmesh.cginc" />
