@@ -341,13 +341,20 @@
     <Compile Include="Assets\Pathfinding\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\Pathfinding\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\Pathfinding\Utilities\UnityReferenceHelper.cs" />
+    <Compile Include="Assets\Scripts\AIManager.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\HumanoidAIController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\DialogueGUI.cs" />
+    <Compile Include="Assets\Scripts\Graphs\PlatformerGenerator.cs" />
     <Compile Include="Assets\Scripts\Gun.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Movement\BasicMovement.cs" />
     <Compile Include="Assets\Scripts\SpicySpriteManager.cs" />
+    <Compile Include="Assets\Scripts\TextBoxManager.cs" />
+    <Compile Include="Assets\Scripts\TextImporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
@@ -365,6 +372,8 @@
     <None Include="Assets\Pathfinding\Readme.txt" />
     <None Include="Assets\Pathfinding\Readme_upgrading.txt" />
     <None Include="Assets\Pathfinding\link.xml" />
+    <None Include="Assets\Text\TestyBoi.txt" />
+    <None Include="Assets\Text\TestyBoi2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
