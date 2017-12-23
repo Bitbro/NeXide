@@ -12,7 +12,8 @@ public class PlatformerGenerator : NavGraph
     public int width;
     public int height;
     public float maxAngle;
-    public int jumpHeight = 1;
+    public int jumpHeight = 5;
+    public int airMobi = 2;
     public float scale = 1;
 
     // Here we will store all nodes in the graph
