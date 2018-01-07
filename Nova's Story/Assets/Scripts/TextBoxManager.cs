@@ -9,7 +9,7 @@ public class TextBoxManager : MonoBehaviour {
     [SerializeField] private Text theText;
     [SerializeField] private TextAsset[] textFile;
     [SerializeField] private string[] textLines;
-
+    
     [SerializeField] private int currentLine;
     [SerializeField] private int endAtLine;
     [SerializeField] private int textFileCounter;
@@ -26,13 +26,6 @@ public class TextBoxManager : MonoBehaviour {
 
         }
 
-        else if (textFile[textFileCounter] == null)
-        {
-
-            textBox.gameObject.SetActive(false);
-
-        }
-
         if (endAtLine == 0)
         {
 
@@ -45,7 +38,7 @@ public class TextBoxManager : MonoBehaviour {
     void Update()
     {
 
-        while (currentLine != endAtLine)
+        if (currentLine != endAtLine)
         {
 
             if (Input.GetKeyUp(KeyCode.Space))
@@ -58,11 +51,26 @@ public class TextBoxManager : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
 
-            textFileCounter++;
-            this.Start();
+            currentLine = 0;
+
+            if (textFileCounter != textFile.Length - 1)
+            {
+
+                textFileCounter++;
+                endAtLine = 0;
+                this.Start();
+
+            }
+            else
+            {
+
+                textBox.SetActive(false);
+
+            }
+
 
         }
 
