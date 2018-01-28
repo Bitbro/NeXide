@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(requiredComponent: typeof(AudioSource))]
 
 public class Gun : MonoBehaviour {
+
+    [SerializeField] private GameObject btBullet;
     [SerializeField] private Transform muzzle;
     private AudioSource audioSource;
 
@@ -21,6 +23,12 @@ public class Gun : MonoBehaviour {
             SpicySpriteManager.AddBullet(muzzle.position, muzzle.rotation);           
 
             audioSource.Play();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameObject projectile = Instantiate(btBullet, muzzle.position, muzzle.rotation);
+            
         }
     }
 

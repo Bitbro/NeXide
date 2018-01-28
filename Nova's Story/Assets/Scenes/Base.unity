@@ -402,7 +402,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 361153221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 382, y: 189.5, z: 0}
+  m_LocalPosition: {x: 312.5, y: 189.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1977483862}
@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de4d8000a7c327449014812253da542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btBullet: {fileID: 0}
   muzzle: {fileID: 783212974}
 --- !u!212 &1413808887
 SpriteRenderer:
@@ -1435,14 +1436,6 @@ Prefab:
     - target: {fileID: 4266746561821008, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535785783432378, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535785783432378, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
