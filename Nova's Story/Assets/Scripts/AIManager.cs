@@ -15,9 +15,12 @@ public class AIManager : MonoBehaviour {
 
         I = this;
 	}
-	
+
     public static Transform GetPlayerTransform()
     {
-        return I.player;
+        if (I != null && I.player != null) {
+            return I.player;
+        }
+        return null;
     }
 }
