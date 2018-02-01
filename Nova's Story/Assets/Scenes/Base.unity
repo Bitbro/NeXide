@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de4d8000a7c327449014812253da542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btBullet: {fileID: 0}
+  bulletTimePrefab: {fileID: 0}
   muzzle: {fileID: 783212974}
 --- !u!212 &1413808887
 SpriteRenderer:
@@ -1437,6 +1437,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114436738840657172, guid: 4be86b162c4f97d429e0c24d75b685eb,
+        type: 2}
+      propertyPath: bulletTimePrefab
+      value: 
+      objectReference: {fileID: 1937984261924778, guid: 09ebcde7508c21d43bc004e4b23e6a28,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
   m_IsPrefabParent: 0

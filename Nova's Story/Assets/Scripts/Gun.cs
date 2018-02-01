@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour {
 
-    [SerializeField] private GameObject btBullet;
+    public GameObject bulletTimePrefab;
     [SerializeField] private Transform muzzle;
     private AudioSource audioSource;
 
@@ -27,7 +27,8 @@ public class Gun : MonoBehaviour {
 
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            GameObject projectile = Instantiate(btBullet, muzzle.position, muzzle.rotation);
+
+            GameObject shot = Instantiate(bulletTimePrefab, muzzle.position, muzzle.rotation);
             
         }
     }

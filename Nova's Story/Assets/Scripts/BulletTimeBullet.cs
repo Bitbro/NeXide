@@ -10,22 +10,47 @@ public class BulletTimeBullet : MonoBehaviour
     private float distanceToBarrier;
     private float minDistToHealth;
     [SerializeField] private int damage;
+    [SerializeField] private int decrementor;
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private LayerMask stoplayers;
-    private RaycastHit[] collisions;
+    private Health health;
+    private RaycastHit2D[] collisions;
     private Ray ray;
-
+    
     // Use this for initialization
     void Start()
     {
 
         ray = new Ray(transform.position, transform.forward);
-        collisions = Physics.RaycastAll(ray, range, hitLayers).OrderBy(collision => collision.distance).ToArray();
+        collisions = Physics2D.RaycastAll((Vector2) transform.position, (Vector2) transform.rotation.eulerAngles, range, hitLayers).OrderBy(collision => collision.distance).ToArray();
 
-        foreach (RaycastHit collision in collisions)
+        foreach (RaycastHit2D collision in collisions)
         {
 
-            
+            health = collision.collider.gameObject.GetComponent<Health>();
+
+            if (health == null)
+            {
+
+                this.damage = 0;
+                Destroy(this.gameObject);
+
+            }
+            else
+            {
+
+                health.TakeDamage(damage);
+                damage -= decrementor;
+
+                if (damage <= 0)
+                {
+
+                    damage = 0;
+                    Destroy(this.gameObject);
+
+                }
+
+            }
 
         }
 
