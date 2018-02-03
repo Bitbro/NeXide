@@ -306,9 +306,6 @@ MonoBehaviour:
       m_Bits: 4294967295
     useGraphRaycasting: 0
   traversableTags: -1
-  traversableTagsCompatibility:
-    tagsChange: -1
-    tagsSet: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &16334114
 MonoBehaviour:
@@ -597,8 +594,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1004479936}
-  - component: {fileID: 1004479937}
   - component: {fileID: 1004479938}
+  - component: {fileID: 1004479939}
+  - component: {fileID: 1004479937}
   m_Layer: 0
   m_Name: A* Pathfinding Manager
   m_TagString: Untagged
@@ -632,9 +630,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACAn+tWsv25CQIAAH4EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF9U9tu2kAQ/RXk51IBwlXoWwsJrRQCCq36vF7P4hHrXWsvJSbi3zu7tmPHrfqC8TlnZs5c/JowWwF3z8yhTj5P5h8mCVpdgjPIv6iTBAJnBHqFQpvyPj/BWltnCRZMWiDKaBeiFUGvk+SFHtNVCKnb0Gt4Tm70j4NyYHrdv1VeccnKCvIjXqEXp506bWRK59AqFiG3lhJtayNxdRWI5JnVCZE5Mmoplg4dFoCnwo0D90JYcK0dw+oNGppMkzH5ql0RMpXMnhtPv5n0sXj6Kfppku7+4qfzSAujy29d3fks1HAF8jM55My6wTyH8Oa9ca8uTJ5ZJuFXAepJb432KifSGR9CvYXFpn99a21dAD8PSjReO7QLrv67mVvs/mUtscwC8nHZAEep46zjzsHQVr6T4XgRts1AaHDx08IPdhqeTks8oLGOqLZL5p1+RHXeGsyH6g7foHWPWGIzyXAKoZ1MexPUyX0ccmjfu7U2CiLcNlmBYtLVB6rrxjsfcYPKI+aBcae7nbRc97GMQiLc62ezEXXQl7ft2kJfdmCLvXcSFfSmA/FEg11rpZqTHI6lCzt6IxgfhJ085u9vMVku02y+AMGWWS7uBJ8uYLXis1W6zNNFdidEEo8VFfXJ5KEx2o6H1qz65IoOM2Tc1ZOwJ/phVfxCcsMuW7yWejB1VEIfuQFQ+yZJ9H77A1BLAwQUAAAICAAAgJ/rbuF0SzQAAAA3AAAAEgAkAGdyYXBoMF9lZGl0b3IuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWyslPzk5NUbJSKCkqTdVRUCrOyC93rSgpSgQKpSXmFIPECjLL8kuAfCXn1LyS1CKlWgBQSwMEFAAACAgAAICf6xJz/dliAAAAbgAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPQMzTUUVBKL0osyCgGioA5pZkpIHa0komJaZKhUWpaoklSSppFWrKuUaqlZbKBpalJiqlRkkVamlIsUH1JZUGqX2JuKkSPb6V7UWaKO8hApdhaAFBLAQItABQAAAgIAACAn+tWsv25CQIAAH4EAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACAn+tu4XRLNAAAADcAAAASACQAAAAAAAAAAAAAAFYCAABncmFwaDBfZWRpdG9yLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAgJ/rEnP92WIAAABuAAAACQAkAAAAAAAAAAAAAADeAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAADAAMAHAEAAIsDAAAAAA==
+    dataString: UEsDBBQAAAgIAACAn+uJOuPxiwAAAKwAAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFFjEEKwjAQRa8SZq0QS9NWL+DSgicYk0kdSCclTRUtvbtBF+7+//z3VhgWdnBSq4IHhoVKhKa6WSJ7MDVZwsrsG137zjTHVtdoqrYDte0UsHBmDD0JhvwqoC5jnEhKzGmh0gTHr7EPmH1MIyXVY757FscyQHm4hM8zv8c4/ykWH682EcnlZ/MYZto+UEsDBBQAAAgIAACAn+seloFKbwAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM00FFQSi9KLMgoBooYgjilmSkgdrSSmVFScmpqsqGpSWpyaqKRqa6ZgUmahamZpbmBSaKpkbmFUixQfUllQapfYm4qRE9ATmJJWn5RbmpRQGJJRlpmXkpmXrpSbC0AUEsBAi0AFAAACAgAAICf64k64/GLAAAArAAAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAICf6x6WgUpvAAAAeAAAAAkAJAAAAAAAAAAAAAAA2AAAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACSAQAAAAA=
     upgradeData: 
-    data_backup: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
@@ -660,43 +657,11 @@ MonoBehaviour:
     _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors: []
-  tagNames:
-  - Basic Ground
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
-  - 11
-  - 12
-  - 13
-  - 14
-  - 15
-  - 16
-  - 17
-  - 18
-  - 19
-  - 20
-  - 21
-  - 22
-  - 23
-  - 24
-  - 25
-  - 26
-  - 27
-  - 28
-  - 29
-  - 30
-  - 31
+  tagNames: []
   heuristic: 2
   heuristicScale: 1
-  threadCount: 0
-  maxFrameTime: 10
+  threadCount: 1
+  maxFrameTime: 1
   minAreaSize: 0
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
@@ -718,6 +683,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1611136904}
+--- !u!114 &1004479939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1004479935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632ae7eb1d4ce49d38a1e38ee7efe7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: 2dda267fcac3181b-70cdf84035edb999
 --- !u!1 &1376065331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,11 +1105,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4266746561821008, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.79
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4266746561821008, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 17.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4266746561821008, guid: 4be86b162c4f97d429e0c24d75b685eb, type: 2}
       propertyPath: m_LocalPosition.z
