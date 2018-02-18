@@ -215,17 +215,10 @@
       <HintPath>Assets/Pathfinding/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-<<<<<<< HEAD
       <HintPath>C:/Users/arasu/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/arasu/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
-=======
-      <HintPath>C:/Users/jaket/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:/Users/jaket/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
->>>>>>> master
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -235,33 +228,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
-    <Compile Include="Assets\Anima2D\Examples\Scripts\CharacterMotion.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\Follow.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SkinnedMeshCombiner.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringBone.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringCollider.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpringManager.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpriteCycle.cs" />
-    <Compile Include="Assets\Anima2D\Examples\Scripts\SpriteCycleParallax.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\Bone2D.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\Control.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\EditorUpdaterProxy.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\Ik2D.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkCCD2D.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkGroup.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkLimb2D.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkSolver2D.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkSolver2DCCD.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\IkSolver2DLimb.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\MathUtils.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\Pose.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\PoseManager.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\SpriteMesh.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\SpriteMeshAnimation.cs" />
-    <Compile Include="Assets\Anima2D\Scripts\SpriteMeshInstance.cs" />
->>>>>>> master
     <Compile Include="Assets\Pathfinding\changelog.cs" />
     <Compile Include="Assets\Pathfinding\Core\AI\AIBase.cs" />
     <Compile Include="Assets\Pathfinding\Core\AI\AILerp.cs" />
@@ -353,10 +319,7 @@
     <Compile Include="Assets\Pathfinding\Utilities\UnityReferenceHelper.cs" />
     <Compile Include="Assets\Scripts\AIManager.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\Scripts\BulletTimeBullet.cs" />
->>>>>>> master
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Controllers\AIController.cs" />
     <Compile Include="Assets\Scripts\Controllers\HumanoidAIController.cs" />
@@ -366,21 +329,9 @@
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Movement\BasicMovement.cs" />
     <Compile Include="Assets\Scripts\SpicySpriteManager.cs" />
-<<<<<<< HEAD
-  </ItemGroup>
-  <ItemGroup>
-=======
     <Compile Include="Assets\Scripts\TextBoxManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
-    <None Include="Assets\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
-    <None Include="Assets\Anima2D\Examples\Shaders\VisibleInsideMask.shader" />
-    <None Include="Assets\Anima2D\Examples\Shaders\VisibleOutsideMask.shader" />
-    <None Include="Assets\Anima2D\Licenses.txt" />
-    <None Include="Assets\Anima2D\Readme.txt" />
-    <None Include="Assets\Anima2D\Version.txt" />
->>>>>>> master
     <None Include="Assets\Pathfinding\Editor\EditorAssets\Materials\Navmesh.cginc" />
     <None Include="Assets\Pathfinding\Editor\EditorAssets\Materials\Navmesh.shader" />
     <None Include="Assets\Pathfinding\Editor\EditorAssets\Materials\NavmeshOutline.shader" />
@@ -389,11 +340,8 @@
     <None Include="Assets\Pathfinding\Readme.txt" />
     <None Include="Assets\Pathfinding\Readme_upgrading.txt" />
     <None Include="Assets\Pathfinding\link.xml" />
-<<<<<<< HEAD
-=======
     <None Include="Assets\Text\TestyBoi.txt" />
     <None Include="Assets\Text\TestyBoi2.txt" />
->>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

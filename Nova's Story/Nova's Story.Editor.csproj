@@ -317,6 +317,8 @@
     <None Include="Assets\Pathfinding\Readme.txt" />
     <None Include="Assets\Pathfinding\Readme_upgrading.txt" />
     <None Include="Assets\Pathfinding\link.xml" />
+    <None Include="Assets\Text\TestyBoi.txt" />
+    <None Include="Assets\Text\TestyBoi2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
