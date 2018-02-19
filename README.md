@@ -18,7 +18,7 @@ Yuming Tsang - Artist, Programmer
 
 Xuanshuo "Stone" Zhang - Programmer, Story-Writer
 
-Jacob "Jake" Tebbe - Programmer
+Jacob Tebbe - Programmer
 
 Hrithik Arasu - Story-Writer, Programmer
 
