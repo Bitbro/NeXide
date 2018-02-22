@@ -9,17 +9,17 @@ using UnityEditor;
 [JsonOptIn]
 public class PlatformerPathfinding : NavGraph
 {
-    public LayerMask ground;
-    public int width = 10;
-    public int height = 10;
-    public float resolution = 0.25f;
-    public Vector3 startPos = new Vector2(-5, -5);
-    public float maxSlope = 45;
+    [JsonMember] public LayerMask ground;
+    [JsonMember] public int width = 10;
+    [JsonMember] public int height = 10;
+    [JsonMember] public float resolution = 0.25f;
+    [JsonMember] public Vector3 startPos = new Vector2(-5, -5);
+    [JsonMember] public float maxSlope = 45;
 
     private PointNode[] nodes;
     protected override IEnumerable<Progress> ScanInternal()
     {
-        if (resolution < 0.001f)
+        if (resolution < 0.1f)
         {
             Debug.Log("Resolution too low!");
             yield break;
@@ -133,6 +133,4 @@ public class PlatformerPathfinding : NavGraph
 
         return connections.ToArray();
     }
-
-
 }
