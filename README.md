@@ -12,7 +12,7 @@ Gabrielle Gaston - Soundtrack Composer
 
 Kaden Coleman - Artist
 
-Chris Loo - Artist
+Chris Loo - "Programmer," Story-Writer
 
 Yuming Tsang - Artist, Programmer
 
