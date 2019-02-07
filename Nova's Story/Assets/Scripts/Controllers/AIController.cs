@@ -26,8 +26,8 @@ public abstract class AIController : MonoBehaviour {
         {
             AIUpdate();
             // Wait for 0.25 seconds to update this AI loop. Random value added to prevent
-            // all AI from updating on the same frame
-            yield return new WaitForSeconds(0.25f + Random.value / 2);
+            // all AI units from updating on the same frame
+            yield return new WaitForSeconds(0.4f + Random.value / 4f);
 
             // Start a path and wait for it
             p = seeker.StartPath(this.transform.position, target);
@@ -37,9 +37,12 @@ public abstract class AIController : MonoBehaviour {
     }
 
     private void Update()
-    {
-        if (p != null && p.vectorPath != null)
+    {        
+        if (p != null && p.vectorPath != null && p.vectorPath.Count > 1)
         {
+            float horizontal = (p.vectorPath[1].x - this.transform.position.x) > 0 ? 1 : -1;
+            movement.HorizontalMovement(horizontal);
+
             for (int i = 1; i < p.vectorPath.Count; i++)
             {
                 Debug.DrawLine(p.vectorPath[i - 1], p.vectorPath[i]);

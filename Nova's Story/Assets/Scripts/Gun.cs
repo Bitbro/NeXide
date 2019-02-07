@@ -11,9 +11,7 @@ public class Gun : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         audioSource = GetComponent<AudioSource>();
-
     }
 	
 	// Update is called once per frame
