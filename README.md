@@ -12,13 +12,13 @@ Gabrielle Gaston - Soundtrack Composer
 
 Kaden Coleman - Artist
 
-Chris Loo - Artist
+Chris Loo - "Programmer," Story-Writer
 
 Yuming Tsang - Artist, Programmer
 
 Xuanshuo "Stone" Zhang - Programmer, Story-Writer
 
-Jacob "Jake" Tebbe - Programmer
+Jacob Tebbe - Programmer
 
 Hrithik Arasu - Story-Writer, Programmer
 
