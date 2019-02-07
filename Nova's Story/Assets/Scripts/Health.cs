@@ -19,6 +19,12 @@ public class Health : MonoBehaviour {
         shield = maxShield;
 	}
 
+    public int GetShield()
+    {
+
+        return this.shield;
+    }
+
     /// <summary>
     /// Regenerate the shield after a short delay.
     /// </summary>
@@ -77,6 +83,8 @@ public class Health : MonoBehaviour {
             }
         }
     }
+
+  
 
     void Death()
     {
